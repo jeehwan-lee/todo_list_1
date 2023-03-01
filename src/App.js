@@ -4,6 +4,7 @@ import "./App.css";
 import Todo from "./components/Todo";
 import Todobody from "./components/Todobody";
 import Todohead from "./components/Todohead";
+import TodoList from "./components/TodoList";
 
 function App() {
   //TodoList item 배열
@@ -18,14 +19,12 @@ function App() {
     }
   `;
 
-  const todoItems = item.map((item, idx) => <Todo item={item} key={item.id} />);
-
   return (
     <div className="App">
       <GlobalStyle />
       <Todobody>
         <Todohead />
-        {todoItems}
+        <TodoList item={item} />
       </Todobody>
     </div>
   );
