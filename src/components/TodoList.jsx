@@ -2,25 +2,23 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Todo from "./Todo";
 
-function TodoList(props) {
-  const TodoListBlock = styled.div`
-    flex: 1;
-    padding: 20px 32px;
-    padding-bottom: 48px;
-    overflow-y: auto;
-  `;
+const TodoListBlock = styled.div`
+  flex: 1;
+  padding: 20px 32px;
+  padding-bottom: 48px;
+  overflow-y: auto;
+`;
 
+function TodoList(props) {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
     setItems(props.item);
-  }, []);
+  }, [props.item]);
 
-  const todoItems = items.map((item, idx) => (
-    <Todo item={item} key={item.id} />
-  ));
+  const todoList = items.map((item) => <Todo item={item} key={item.id} />);
 
-  return <TodoListBlock>{todoItems}</TodoListBlock>;
+  return <TodoListBlock>{todoList}</TodoListBlock>;
 }
 
 export default TodoList;
