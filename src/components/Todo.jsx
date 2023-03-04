@@ -64,11 +64,22 @@ function Todo(props) {
     setItem(props.item);
   }, []);
 
+  const deleteItem = () => {
+    props.deleteItem(item.title);
+  };
+
+  const check = () => {
+    props.check(item.title);
+    console.log("heee");
+  };
+
   return (
     <TodoItem>
-      <CheckCircle done={item.done}>{item.done && <MdDone />}</CheckCircle>
+      <CheckCircle done={item.done} onClick={check}>
+        {item.done && <MdDone />}
+      </CheckCircle>
       <Text done={item.done}>{item.title}</Text>
-      <Remove>
+      <Remove onClick={deleteItem}>
         <MdDelete />
       </Remove>
     </TodoItem>

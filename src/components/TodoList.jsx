@@ -16,7 +16,14 @@ function TodoList(props) {
     setItems(props.item);
   }, [props.item]);
 
-  const todoList = items.map((item) => <Todo item={item} key={item.id} />);
+  const todoList = items.map((item) => (
+    <Todo
+      item={item}
+      key={item.id}
+      deleteItem={props.deleteItem}
+      check={props.check}
+    />
+  ));
 
   return <TodoListBlock>{todoList}</TodoListBlock>;
 }

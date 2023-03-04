@@ -20,15 +20,27 @@ function App() {
     { id: 1, title: "Hello 2", done: false },
   ]);
 
-  const addItem = (text) => {
+  const addItem = (title) => {
     setItems([
       ...items,
       {
         id: items.length,
-        title: text,
+        title: title,
         done: false,
       },
     ]);
+  };
+
+  const deleteItem = (title) => {
+    setItems(items.filter((item) => item.title !== title));
+  };
+
+  const check = (title) => {
+    items.map((item) => {
+      if (item.title === title) {
+        item.done = false;
+      }
+    });
   };
 
   return (
@@ -36,7 +48,7 @@ function App() {
       <GlobalStyle />
       <Todobody>
         <Todohead item={items} />
-        <TodoList item={items} />
+        <TodoList item={items} deleteItem={deleteItem} check={check} />
         <TodoCreate addItem={addItem} />
       </Todobody>
     </div>
