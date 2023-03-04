@@ -33,7 +33,7 @@ function Todohead(props) {
 
   useEffect(() => {
     setTodos(props.item);
-  }, []);
+  }, [props.item]);
 
   const undoneTodos = todos.filter((todo) => !todo.done);
 
@@ -41,7 +41,11 @@ function Todohead(props) {
     <TodoheadBlock>
       <h1>2023년 3월 1일</h1>
       <div className="day">수요일</div>
-      <div className="tasks-left">할 일 {undoneTodos.length}개 남음</div>
+      {undoneTodos.length !== 0 ? (
+        <div className="tasks-left">할 일 {undoneTodos.length}개 남음</div>
+      ) : (
+        <div className="tasks-left">할 일 없음</div>
+      )}
     </TodoheadBlock>
   );
 }
