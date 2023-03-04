@@ -62,7 +62,7 @@ function Todo(props) {
 
   useEffect(() => {
     setItem(props.item);
-  }, []);
+  }, [props.item]);
 
   const deleteItem = () => {
     props.deleteItem(item.title);

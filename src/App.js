@@ -36,11 +36,16 @@ function App() {
   };
 
   const check = (title) => {
-    items.map((item) => {
-      if (item.title === title) {
-        item.done = false;
-      }
-    });
+    setItems(
+      items.map((item) =>
+        item.title === title
+          ? {
+              ...item,
+              done: !item.done,
+            }
+          : item
+      )
+    );
   };
 
   return (
